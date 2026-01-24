@@ -7,6 +7,13 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
+pillow = "^12.1.0"
+dotenv = "^0.9.9"
+python-decouple = "^3.8"
+djangorestframework = "^3.16.1"
+django = "^6.0.1"
+psycopg2-binary = "^2.9.11"
+redis = "^7.1.0"
 
 
 [build-system]
