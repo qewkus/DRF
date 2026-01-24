@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from users.apps import UsersConfig
+from django.urls import path
 
-# Create your views here.
+app_name = UsersConfig.name
+
+urlpatterns = [
+]
