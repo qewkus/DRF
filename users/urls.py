@@ -9,5 +9,4 @@ router = SimpleRouter()
 router.register(r"payments", PaymentsViewSet, basename="payments")
 router.register("users", UserViewSet, basename="users")
 
-urlpatterns = [
-]
+urlpatterns = []
