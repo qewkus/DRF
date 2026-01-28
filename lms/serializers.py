@@ -3,7 +3,6 @@ from lms.models import Course, Lesson
 
 
 class CourseSerializer(ModelSerializer):
-    lessons_count = SerializerMethodField()
 
     class Meta:
         model = Course
