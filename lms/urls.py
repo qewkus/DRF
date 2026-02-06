@@ -1,7 +1,9 @@
 from rest_framework.routers import SimpleRouter
-from lms.views import LessonListAPIView, LessonCreateAPIView, LessonUpdateAPIView, LessonRetrieveAPIView, LessonDestroyAPIView, CourseViewSet
 from lms.apps import LmsConfig
 from django.urls import path
+from lms.views import (CourseViewSet, LessonCreateAPIView,
+                       LessonDestroyAPIView, LessonListAPIView,
+                       LessonRetrieveAPIView, LessonUpdateAPIView)
 
 app_name = LmsConfig.name
 
