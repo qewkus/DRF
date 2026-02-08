@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from lms.validators import YouTubeValidator
-from lms.models import Course, Lesson
+from lms.models import Course, Lesson, Subscription
 
 
 class CourseSerializer(ModelSerializer):
@@ -9,6 +9,12 @@ class CourseSerializer(ModelSerializer):
         model = Course
         fields = "__all__"
         validators = [YouTubeValidator(field="video_url")]
+
+    def get_is_subscribed(self, obj):
+        request = self.context.get("request")
+        if request and request.user.is_authenticated:
+            return Subscription.objects.filter(user=request.user, course=obj).exists()
+        return False
 
 
 class LessonSerializer(ModelSerializer):
