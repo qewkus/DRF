@@ -36,7 +36,9 @@ class PaymentsViewSet(viewsets.ModelViewSet):
         try:
             course = Course.objects.get(id=course_id)
         except Course.DoesNotExist:
-            return Response({"error": "Course not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(
+                {"error": "Course not found"}, status=status.HTTP_404_NOT_FOUND
+            )
 
         try:
             product = create_product_stripe(course)
