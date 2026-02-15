@@ -13,10 +13,10 @@ def send_course_update_email(email):
 
 
 @shared_task
-def blocked_inactive_user(user_id):
+def blocked_inactive_user():
     """Блокировка пользователя, если он не заходил более 30 дней."""
     one_month_ago = timezone.now() - timezone.timedelta(days=30)
-    inactive_users = User.objects.filter(last_login__lt=one_month_ago, is_activ=True)
+    inactive_users = User.objects.filter(last_login__lt=one_month_ago, is_active=True)
 
     for user in inactive_users:
         user.is_active = False
