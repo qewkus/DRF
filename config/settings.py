@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "django_filters",
     "drf_yasg",
+    "django_celery_beat",
     "users",
     "lms",
 ]
@@ -121,3 +122,13 @@ SIMPLE_JWT = {
 }
 
 API_KEY_STRIPE = os.getenv(("API_KEY_STRIPE"))
+
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
+
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+
+CELERY_TIMEZONE = TIME_ZONE
+
+CELERY_TASK_TRACK_STARTED = True
+
+CELERY_TASK_TIME_LIMIT = 30 * 60
