@@ -11,7 +11,7 @@ pillow = "^12.1.0"
 dotenv = "^0.9.9"
 python-decouple = "^3.8"
 djangorestframework = "^3.16.1"
-django = "^6.0.1"
+django = "^5.0"
 psycopg2-binary = "^2.9.11"
 redis = "^7.1.0"
 requests = "^2.32.5"
@@ -23,6 +23,9 @@ coverage = "^7.13.3"
 drf-yasg = "^1.21.14"
 django-cors-headers = "^4.9.0"
 stripe = "^14.3.0"
+celery = "^5.6.2"
+eventlet = "^0.40.4"
+django-celery-beat = "^2.8.1"
 
 
 [build-system]

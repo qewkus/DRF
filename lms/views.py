@@ -9,6 +9,9 @@ from lms.serializers import (CourseSerializer,
                              LessonSerializer)
 from users.permissions import IsModer, IsOwner
 from lms.paginators import LessonPaginator, CoursePaginator
+from lms.tasks import send_course_update_email
+from datetime import timedelta
+from django.utils.timezone import now
 
 
 class CourseViewSet(ModelViewSet):
@@ -24,6 +27,14 @@ class CourseViewSet(ModelViewSet):
         course = serializer.save()
         course.owner = self.request.user
         course.save()
+
+    def perform_update(self, serializer):
+        course = serializer.save()
+
+        if now() - course.last_update >= timedelta(hours=4):
+            subscriptions = Subscription.objects.filter(course=course)
+            for subscription in subscriptions:
+                send_course_update_email.delay(subscription.user.email, course.title)
 
     def get_permissions(self):
         if self.action == "create":
